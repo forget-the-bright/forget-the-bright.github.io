@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://forget-the-bright.github.io/sitemap.xml
+Sitemap: https://github.wuanwanghao.top/sitemap.xml
