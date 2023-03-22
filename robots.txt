@@ -1,0 +1,5 @@
+
+User-agent:*
+Disallow:
+
+Sitemap: https://forget-the-bright.github.io/sitemap.xml
