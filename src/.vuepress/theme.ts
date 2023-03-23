@@ -114,7 +114,16 @@ export default hopeTheme({
   },
 
   plugins: {
-    blog: true,
+    //博客功能 值为false 则为关闭
+    blog: {
+      article:"/article/",
+      category:"/category/",
+      categoryItem:"/category/:name/",
+      tag:"/tag/",
+      tagItem:"/tag/:name/",
+      star:"/star/",
+      timeline:"/timeline/",
+    },
     //git插件 页面提示git提交人账号信息
     git:false,
     //评论插件开启
