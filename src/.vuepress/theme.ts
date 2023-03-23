@@ -66,12 +66,12 @@ export default hopeTheme({
       // sidebar
       sidebar: enSidebar,
 
-      footer: "Default footer",
+      footer: "blog footer",
 
       displayFooter: true,
 
       blog: {
-        description: "A FrontEnd programmer",
+        description: "A All Stack programmer",
         intro: "/en/intro.html",
       },
 
@@ -90,12 +90,12 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      footer: "默认页脚",
+      footer: "这页的脚",
 
       displayFooter: true,
 
       blog: {
-        description: "一个前端开发者",
+        description: "一个全栈开发者",
         intro: "/intro.html",
       },
 

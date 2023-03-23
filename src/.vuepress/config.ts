@@ -15,7 +15,12 @@ export default defineUserConfig({
       description: "show my learn",
     },
   },
-
+  markdown:{
+    //markdown 侧边栏标题导航提取 h1 ~ h4
+    headers:{
+      level: [1,2,3,4],
+    }
+  },
   theme,
 
   // Enable it with pwa
