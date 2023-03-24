@@ -10,9 +10,9 @@ heroFullScreen: true
 tagline: 简单的知识分享
 projects:
   - icon: project
-    name: 项目名称
-    desc: 项目详细描述
-    link: https://你的项目链接
+    name: go-dde
+    desc: go 实现的动态数据交换
+    link: https://github.com/forget-the-bright/go-dde
 
   - icon: link
     name: 链接名称
