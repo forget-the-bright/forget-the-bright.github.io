@@ -15,9 +15,9 @@ projects:
     link: https://github.com/forget-the-bright/go-dde
 
   - icon: link
-    name: 链接名称
-    desc: 链接详细描述
-    link: https://链接地址
+    name: halo
+    desc: 我的halo BLog
+    link: https://www.wuanwanghao.top
 
   - icon: book
     name: 书籍名称
