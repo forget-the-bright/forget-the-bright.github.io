@@ -125,7 +125,7 @@ export default hopeTheme({
       timeline:"/timeline/",
     },
     //git插件 页面提示git提交人账号信息
-    git:false,
+    git:true,
     //评论插件开启
     comment: {
       // @ ts-expect-error: You should generate and use your own comment service
