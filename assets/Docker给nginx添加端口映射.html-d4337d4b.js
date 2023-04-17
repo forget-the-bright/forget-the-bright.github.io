@@ -1,0 +1,46 @@
+import{_ as n,W as s,X as a,a2 as e}from"./framework-3a0c4e99.js";const t={},o=e(`<h1 id="docker给nginx添加端口映射" tabindex="-1"><a class="header-anchor" href="#docker给nginx添加端口映射" aria-hidden="true">#</a> Docker给nginx添加端口映射</h1><h2 id="场景" tabindex="-1"><a class="header-anchor" href="#场景" aria-hidden="true">#</a> 场景：</h2><blockquote><p>运行了nginx，一开始只映射了80端口，后面载部署项目的时候，需要用到其他端口，不想重新部署容器，所以通过修改配置文件的方式给容器添加其他端口 当然。添加端口的方法是通用的，除此以外的方法比如将容器打包成镜像，再运行一个容器，或者干脆放弃当前容器，重新运行一个容器是完全不在我考虑范围内的</p></blockquote><h2 id="_1、查看容器id" tabindex="-1"><a class="header-anchor" href="#_1、查看容器id" aria-hidden="true">#</a> 1、查看容器ID</h2><p>执行命令</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">docker</span> inspect nginx <span class="token comment"># 容器名</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>输出</p><div class="language-json line-numbers-mode" data-ext="json"><pre class="language-json"><code><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;Id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;135254e3429d1e75aa68569137c753b789416256f2ced52b4c5a85ec3849db87&quot;</span><span class="token punctuation">,</span> # hash_of_the_container
+        <span class="token property">&quot;Created&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2020-08-21T09:41:36.597993005Z&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;Path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/docker-entrypoint.sh&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;Args&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">&quot;nginx&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;-g&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;daemon off;&quot;</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;State&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+...
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2、修改之前一定要先停掉容器-否则自动还原" tabindex="-1"><a class="header-anchor" href="#_2、修改之前一定要先停掉容器-否则自动还原" aria-hidden="true">#</a> 2、修改之前一定要先停掉容器，否则自动还原</h2><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">docker</span> stop nginx
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_3、修改配置文件" tabindex="-1"><a class="header-anchor" href="#_3、修改配置文件" aria-hidden="true">#</a> 3、修改配置文件</h2><p>修改hostconfig.json</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /var/lib/docker/containers/135254e3429d1e75aa68569137c753b789416256f2ced52b4c5a85ec3849db87 <span class="token comment"># container id</span>
+
+<span class="token function">vim</span> hostconfig.json
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>找到端口绑定，原本内容：</p><figure><img src="https://local.wuanwanghao.top:30549/upload/2021/09/image-b18afbfb43414f6da5550bae5f7566c0.png" alt="image.png" tabindex="0" loading="lazy"><figcaption>image.png</figcaption></figure><p>照猫画虎，添加端口</p><div class="language-json line-numbers-mode" data-ext="json"><pre class="language-json"><code><span class="token property">&quot;PortBindings&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;80/tcp&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;HostIp&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;HostPort&quot;</span><span class="token operator">:</span> <span class="token string">&quot;80&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;8080/tcp&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;HostIp&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;HostPort&quot;</span><span class="token operator">:</span> <span class="token string">&quot;8080&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;8189/tcp&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;HostIp&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;HostPort&quot;</span><span class="token operator">:</span> <span class="token string">&quot;8189&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改config.v2.json</p><p>同路径下打开config.v2.json，修改:ExposedPorts</p><div class="language-json line-numbers-mode" data-ext="json"><pre class="language-json"><code><span class="token property">&quot;ExposedPorts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;80/tcp&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;8080/tcp&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;8189/tcp&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+... # 略
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="注意" tabindex="-1"><a class="header-anchor" href="#注意" aria-hidden="true">#</a> 注意</h3><p>很多文章中提到还要修改Ports，实际上是不需要的，只有在你没有stop容器时，Ports才会有值，如果关闭了容器，就是null。当然如果你修改了也无所谓，因为重启容器后，就会被刷新。</p><h2 id="_4、保存、退出、重启容器" tabindex="-1"><a class="header-anchor" href="#_4、保存、退出、重启容器" aria-hidden="true">#</a> 4、保存、退出、重启容器</h2><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">sudo</span> systemctl restart docker.service <span class="token comment"># 重启docker服务</span>
+<span class="token function">docker</span> start nginx <span class="token comment"># 容器名 # 启动容器</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div>`,24),p=[o];function i(c,l){return s(),a("div",null,p)}const u=n(t,[["render",i],["__file","Docker给nginx添加端口映射.html.vue"]]);export{u as default};

@@ -1,0 +1,29 @@
+import{_ as a,W as s,X as n,a2 as e}from"./framework-3a0c4e99.js";const i={},l=e(`<h1 id="glibc-版本低的解决方法-以及升级后遇到的问题解决" tabindex="-1"><a class="header-anchor" href="#glibc-版本低的解决方法-以及升级后遇到的问题解决" aria-hidden="true">#</a> glibc 版本低的解决方法 以及升级后遇到的问题解决</h1><p>centos 升级gcc 环境</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>yum <span class="token parameter variable">-y</span> <span class="token function">install</span> centos-release-scl
+yum <span class="token parameter variable">-y</span> <span class="token function">install</span> devtoolset-8-gcc devtoolset-8-gcc-c++ devtoolset-8-binutils
+scl <span class="token builtin class-name">enable</span> devtoolset-8 <span class="token function">bash</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;source /opt/rh/devtoolset-8/enable&quot;</span> <span class="token operator">&gt;&gt;</span>/etc/profile
+yum <span class="token function">install</span> <span class="token parameter variable">-y</span> bison
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>升级make</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">wget</span> http://ftp.gnu.org/gnu/make/make-4.2.tar.gz
+<span class="token function">tar</span> <span class="token parameter variable">-xzvf</span> make-4.2.tar.gz
+<span class="token builtin class-name">cd</span> make-4.2
+<span class="token function">sudo</span> ./configure
+<span class="token function">sudo</span> <span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token function">sudo</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> /usr/bin/make
+<span class="token function">sudo</span> <span class="token function">cp</span> ./make /usr/bin/
+<span class="token function">make</span> <span class="token parameter variable">-v</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>升级glibc</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /wanghao/glibc
+<span class="token function">wget</span> https://mirror.bjtu.edu.cn/gnu/libc/glibc-2.28.tar.xz --no-check-certificate
+<span class="token function">tar</span> <span class="token parameter variable">-xf</span> glibc-2.28.tar.xz
+<span class="token builtin class-name">cd</span> glibc-2.28/
+<span class="token function">mkdir</span> build
+<span class="token builtin class-name">cd</span> build
+<span class="token function">sudo</span> <span class="token punctuation">..</span>/configure <span class="token parameter variable">--prefix</span><span class="token operator">=</span>/usr --disable-profile --enable-add-ons --with-headers<span class="token operator">=</span>/usr/include --with-binutils<span class="token operator">=</span>/usr/bin
+<span class="token function">make</span>  <span class="token parameter variable">-j</span> <span class="token number">8</span>   <span class="token comment">#make 运行时间较长 开启多线程任务编译 开启数量 8</span>
+<span class="token function">make</span> <span class="token function">install</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>查看环境中所有GLIBC</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">ls</span> <span class="token parameter variable">-la</span> /lib64/libc.so.6
+strings /lib64/libc.so.6 <span class="token operator">|</span><span class="token function">grep</span> GLIBC
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="问题解决" tabindex="-1"><a class="header-anchor" href="#问题解决" aria-hidden="true">#</a> 问题解决</h2><h3 id="升级libc后导致中文乱码" tabindex="-1"><a class="header-anchor" href="#升级libc后导致中文乱码" aria-hidden="true">#</a> 升级libc后导致中文乱码</h3><p>如果编译目录没有删除 ，则进入glibc的编译目录，也就是build目录</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>make localedata/install-locales
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>再次执行 locale 这时应该已经正常了 但是如果你已经删除了编译glibc的build目录或者不知道build的目录在哪里 查看 locale-archive 归档文件目录</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>strings /lib64/libc-2.28.so | grep locale-archive
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>查看<code>目标</code> 结果中有没有 locale-archive</p><p>没有就将/usr/lib/locale/locale-archive 软连接到目标位置</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>ln -s /usr/lib/locale/locale-archive  目标
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div>`,18),c=[l];function t(d,r){return s(),n("div",null,c)}const p=a(i,[["render",t],["__file","glibc 版本低的解决方法 以及升级后遇到的问题解决.html.vue"]]);export{p as default};

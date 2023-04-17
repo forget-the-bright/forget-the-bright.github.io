@@ -1,0 +1,7 @@
+import{_ as n,W as o,X as t,Z as e,$ as r,a0 as i,a2 as c,C as d}from"./framework-3a0c4e99.js";const l={},s=e("h1",{id:"docker-安装-portainer",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#docker-安装-portainer","aria-hidden":"true"},"#"),r(" docker 安装 Portainer")],-1),u={href:"https://hub.docker.com/r/6053537/portainer-ce",target:"_blank",rel:"noopener noreferrer"},_=c(`<p>命令：</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>	docker run -d --restart=always \\
+	--name=&quot;portainer&quot; \\
+	-p 9100:9000 \\
+	-v /var/run/docker.sock:/var/run/docker.sock \\
+	-v /home/wanghao/portainer-ce/data:/data \\
+	6053537/portainer-ce
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul><li><code>-d</code> 后台进程启动。</li><li><code>-p 9000:9000</code> 管理控制UI界面访问接口。</li><li><code>-name portainer</code> 容器名称。</li><li><code>--restart=always</code> 进程挂了自动重启，比如重启docker以后自动重启portainer。</li><li><code>-v</code> 数据卷。</li><li><code>6053537/portainer-ce</code> portainer社区版汉化版镜像。</li></ul>`,3);function p(v,m){const a=d("ExternalLinkIcon");return o(),t("div",null,[s,e("p",null,[e("a",u,[r("汉化版Portainer仓库地址"),i(a)])]),_])}const k=n(l,[["render",p],["__file","docker 安装  Portainer.html.vue"]]);export{k as default};

@@ -1,0 +1,2 @@
+import{_ as t,W as a,X as o,Z as e,$ as r}from"./framework-3a0c4e99.js";const s={},n=e("h1",{id:"大概呢",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#大概呢","aria-hidden":"true"},"#"),r(" 大概呢")],-1),c=e("iframe",{src:"https://local.wuanwanghao.top:84/birthday/djs3.html",height:"600px",width:"100%",frameborder:"no",scrolling:"no",allowtransparency:"yes"},`
+`,-1),_=[n,c];function d(h,i){return a(),o("div",null,_)}const f=t(s,[["render",d],["__file","大概呢.html.vue"]]);export{f as default};
