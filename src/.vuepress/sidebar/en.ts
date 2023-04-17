@@ -6,21 +6,21 @@ export const enSidebar = sidebar({
     "intro",
     "slides",
   ],
-  "/en/demo/":[
-    {
-      icon: "discover",
-      text: "Demo",
-      //prefix: "demo/",
-      link: "demo/",
-      children: "structure",
-    },
-  ],
-  "/en/posts/":[
-    {
-      text: "Articles",
-      icon: "note",
-     // prefix: "posts/",
-      children: "structure",
-    },
-  ],
+  // "/en/demo/":[
+  //   {
+  //     icon: "discover",
+  //     text: "Demo",
+  //     //prefix: "demo/",
+  //     link: "demo/",
+  //     children: "structure",
+  //   },
+  // ],
+  // "/en/posts/":[
+  //   {
+  //     text: "Articles",
+  //     icon: "note",
+  //    // prefix: "posts/",
+  //     children: "structure",
+  //   },
+  // ],
 });
