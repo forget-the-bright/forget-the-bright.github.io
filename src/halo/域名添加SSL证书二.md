@@ -18,14 +18,14 @@ headerDepth: 5
 登录 [证书管理控制台](https://console.cloud.tencent.com/ssl)
 
 点击申请免费证书
-![image.png](/upload/2021/09/image-44a5ae01703240c5bb8a71cae2803855.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/09/image-44a5ae01703240c5bb8a71cae2803855.png)
 点击确定
-![image.png](/upload/2021/09/image-1fc6d3a51b9e44dfb728b002a41da8b5.png)**粗体**
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/09/image-1fc6d3a51b9e44dfb728b002a41da8b5.png)**粗体**
 填写信息
-![image.png](/upload/2021/09/image-e81640982af647d8825d6623781efb59.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/09/image-e81640982af647d8825d6623781efb59.png)
 
 接下来步骤走完就行了，没什么难的地方，最后到这个页面下载下来生成的证书
-![image.png](/upload/2021/09/image-403a0e5f29ee49bda821144b0be40b9f.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/09/image-403a0e5f29ee49bda821144b0be40b9f.png)
 
 
 ## 证书安装

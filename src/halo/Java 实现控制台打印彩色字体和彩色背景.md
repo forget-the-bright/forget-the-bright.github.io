@@ -22,7 +22,7 @@ System.out.println(ANSI_COLORNAME + "This text is colored" + ANSI_RESET);
 - 代码关闭到目前为止设置的所有 ANSI 属性，这应该将控制台返回到其默认值。
 
 以下是ANSI颜色代码表：
-![image.png](/upload/2022/10/image-759ba5d2bd104e51b674c1f9c36ba66a.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2022/10/image-759ba5d2bd104e51b674c1f9c36ba66a.png)
 ```\u00lB unincode码 可以用 转义字符 \33 表示```
 ```
 package com.gongyi.common.core.utils;

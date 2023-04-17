@@ -377,7 +377,7 @@ server{
 ```
 
 ## 访问
-![image.png](/upload/2021/10/image-39a8c8939254405f9aab2354d02f3c49.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/10/image-39a8c8939254405f9aab2354d02f3c49.png)
 
 
 

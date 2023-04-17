@@ -9,8 +9,8 @@ tag:
 headerDepth: 5
 ---
 
-
 # EF Core 工具 命令行工具-非包管理器的控制台工具（Entity Framework Core tools reference - .NET Core CLI）
+
 ### 安装工具
 
 ```shell
@@ -65,6 +65,7 @@ Commands:
 ```
 
 更新工具
-使用 ```dotnet tool update --global dotnet-ef``` 将全局工具更新到最新的可用版本。 如果在项目中本地安装了这些工具，请使用 ```dotnet tool update dotnet-ef。``` 通过将 --version <VERSION> 追加到命令来安装特定版本。 有关更多详细信息，请参阅 dotnet 工具文档的更新部分。
-  
+
+使用  ```dotnet tool update --global dotnet-ef``` 将全局工具更新到最新的可用版本。 如果在项目中本地安装了这些工具，请使用  ```dotnet tool update dotnet-ef。``` 通过将 ```--version <VERSION>``` 追加到命令来安装特定版本。 有关更多详细信息，请参阅 dotnet 工具文档的更新部分。
+
 更多用法参考官方文档 [Entity Framework Core 工具参考 - .NET Core CLI](https://learn.microsoft.com/zh-cn/ef/core/cli/dotnet)

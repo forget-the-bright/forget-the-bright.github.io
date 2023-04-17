@@ -13,7 +13,7 @@ headerDepth: 5
 # 全国省市区三级数据库sql
 # 全国省市区三级数据库sql
 > 全国标准编码地区数据库
-[sql下载](/upload/2021/10/area-367fbdec398e41498406ca35d40c79f7.sql)
+[sql下载](https://local.wuanwanghao.top:30549/upload/2021/10/area-367fbdec398e41498406ca35d40c79f7.sql)
 ```sql
 /*
  Navicat Premium Data Transfer

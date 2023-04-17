@@ -84,4 +84,4 @@ docker run -d \
 -t styletang/rocketmq-console-ng:1.0.0
 ```
 
-![image.png](/upload/2021/11/image-883f047266bc4531af1eb96e1b588a8e.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/11/image-883f047266bc4531af1eb96e1b588a8e.png)

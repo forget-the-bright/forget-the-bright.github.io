@@ -51,7 +51,7 @@ vim hostconfig.json
 
 找到端口绑定，原本内容：
 
-![image.png](/upload/2021/09/image-b18afbfb43414f6da5550bae5f7566c0.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/09/image-b18afbfb43414f6da5550bae5f7566c0.png)
 
 照猫画虎，添加端口
 

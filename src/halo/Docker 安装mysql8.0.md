@@ -18,7 +18,7 @@ headerDepth: 5
 首先要获取mysql镜像（可以通过官网下载或者从公司的仓库获取），下面演示从官网下载步骤
 
 #### 2.1 docker search mysql，可以看到搜索的结果，这个结果是按照一定的星级评价规则排序的。
-![image.png](/upload/2021/09/image-6acf16e6457a48e49d80b7b1e6561073.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/09/image-6acf16e6457a48e49d80b7b1e6561073.png)
 #### 2.2 docker pull mysql 拉取一个合适版本的mysql到本地服务器
 
 ### 三、启动镜像
@@ -67,7 +67,7 @@ Query OK, 0 rows affected (0.00 sec)
 ```
 
 ### 五、表名大小写问题
-![image.png](/upload/2021/10/image-c13812355983466f952a08f36c406b63.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/10/image-c13812355983466f952a08f36c406b63.png)
 
 MySQL 上了 8 后，在 Linux 端，对于 lower_case_table_names 参数，只能在初始化的时候设置了，若初始化的时候没设置，那后面就傻愣愣了
 

@@ -54,7 +54,7 @@ docker-compose version # 查看版本号，测试是否安装成功
 [docker 编排参数详解（docker-compose.yml 配置文件编写）](https://xie.infoq.cn/article/d666cde8f2131ff25ddf19ad8)
 ## 常用命令
 ### 1、Docker-Compose命令格式
-docker-compose [-f <arg>...] [options] [COMMAND] [ARGS...]
+docker-compose [-f arg ...] [options] [COMMAND] [ARGS...]
 命令选项如下：
 -f，–file FILE指定Compose模板文件，默认为docker-compose.yml，可以多次指定。
 -p，–project-name NAME指定项目名称，默认将使用所在目录名称作为项目名。

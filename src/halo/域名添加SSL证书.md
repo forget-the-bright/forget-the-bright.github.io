@@ -14,7 +14,7 @@ headerDepth: 5
 # 域名添加SSL证书
  # 域名添加SSL证书
  > 我们的服务器购买域名并解析后，发现访问的时候搜索栏一直显示不安全，这样我们搭建的网站很难吸引到人过来访问，觉得咱们的网站是钓鱼网站
-![image.png](/upload/2021/09/image-91fa2295488f4ebfb10b374d1835b6ae.png)
+![image.png](https://local.wuanwanghao.top:30549/upload/2021/09/image-91fa2295488f4ebfb10b374d1835b6ae.png)
 这时我们就需要给域名添加SSL证书了
 
 ## 操作指南
